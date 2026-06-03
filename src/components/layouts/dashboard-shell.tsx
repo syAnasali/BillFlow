@@ -47,7 +47,17 @@ type DashboardShellProps = {
 function Brand() {
   return (
     <Link className="flex items-center gap-2 font-semibold" href="/dashboard">
-      <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+      <img
+        src="/logo.png"
+        alt="BillFlow Logo"
+        className="size-8 object-contain rounded-md"
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+          const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+          if (fallback) fallback.style.display = "flex";
+        }}
+      />
+      <span className="hidden size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
         <FileTextIcon className="size-4" />
       </span>
       <span>BillFlow</span>
