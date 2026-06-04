@@ -287,7 +287,7 @@ export function InvoiceBuilderForm({ customers, initialInvoice }: InvoiceBuilder
                   <Input
                     id="taxRate"
                     type="number"
-                    step="0.01"
+                    step="any"
                     {...register("taxRate")}
                   />
                   <FieldError errors={[errors.taxRate]} />
@@ -298,7 +298,7 @@ export function InvoiceBuilderForm({ customers, initialInvoice }: InvoiceBuilder
                   <Input
                     id="discountTotal"
                     type="number"
-                    step="0.01"
+                    step="any"
                     {...register("discountTotal")}
                   />
                   <FieldError errors={[errors.discountTotal]} />
@@ -340,7 +340,8 @@ export function InvoiceBuilderForm({ customers, initialInvoice }: InvoiceBuilder
                     {index === 0 && <label className="mb-2 hidden text-xs font-semibold text-muted-foreground sm:block">Quantity</label>}
                     <Input
                       type="number"
-                      step="0.001"
+                      step="1"
+                      min="1"
                       placeholder="Qty"
                       {...register(`items.${index}.quantity` as const)}
                       required
@@ -351,7 +352,7 @@ export function InvoiceBuilderForm({ customers, initialInvoice }: InvoiceBuilder
                     {index === 0 && <label className="mb-2 hidden text-xs font-semibold text-muted-foreground sm:block">Unit Price</label>}
                     <Input
                       type="number"
-                      step="0.01"
+                      step="any"
                       placeholder="Rate"
                       {...register(`items.${index}.rate` as const)}
                       required

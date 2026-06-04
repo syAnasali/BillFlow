@@ -4,6 +4,7 @@ export const invoiceItemSchema = z.object({
   itemName: z.string().trim().min(1, "Item name is required.").max(200),
   quantity: z.coerce
     .number()
+    .int("Quantity must be a whole number.")
     .gt(0, "Quantity must be greater than zero."),
   rate: z.coerce
     .number()
