@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 9,
   },
+  serialNo: { width: 30, textAlign: "left" },
   itemName: { flex: 1 },
   quantity: { textAlign: "right", width: 60 },
   rate: { textAlign: "right", width: 90 },
@@ -201,13 +202,15 @@ export function InvoicePdfDocument({ invoice }: { invoice: InvoicePdfData }) {
         <Text style={styles.sectionTitle}>Items</Text>
         <View style={styles.table}>
           <View style={styles.tableHeader}>
+            <Text style={styles.serialNo}>S.No.</Text>
             <Text style={styles.itemName}>Item</Text>
             <Text style={styles.quantity}>Qty</Text>
             <Text style={styles.rate}>Rate</Text>
             <Text style={styles.amount}>Amount</Text>
           </View>
-          {invoice.items.map((item) => (
+          {invoice.items.map((item, index) => (
             <View key={item.id} style={styles.tableRow} wrap={false}>
+              <Text style={styles.serialNo}>{index + 1}</Text>
               <Text style={styles.itemName}>{item.name}</Text>
               <Text style={styles.quantity}>{item.quantity}</Text>
               <Text style={styles.rate}>{money(item.rate)}</Text>
